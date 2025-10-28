@@ -6,6 +6,7 @@ Nesta aula, você vai aprender a **criar um servidor Node.js com Express** e int
 Esse é o primeiro passo para sair do uso de automações visuais (como n8n) e passar a construir **suas próprias APIs inteligentes via código**.
 
 Ao final, você terá uma API que:
+
 - Recebe uma pergunta em JSON
 - Envia essa pergunta à OpenAI
 - Retorna uma resposta gerada por IA em tempo real ✨
@@ -13,14 +14,14 @@ Ao final, você terá uma API que:
 ---
 
 ## 📦 Estrutura do Projeto
-```
+
+```bash
 express-openai-demo/
 │
 ├── server.js          # Código principal do servidor Express
 ├── .env               # Variáveis de ambiente (chave da OpenAI, porta, etc.)
 ├── .env.example       # Exemplo do arquivo de ambiente
 └── package.json       # Configurações e dependências do projeto
-
 ```
 
 ## ⚙️ 1. Preparando o Ambiente
@@ -36,26 +37,30 @@ express-openai-demo/
 ### 🔧 Passos iniciais
 
 1. Crie uma nova pasta e acesse:
-   ```bash
+
+```bash
    mkdir express-openai-demo
    cd express-openai-demo
+```
 
-	2.	Inicie o projeto Node.js:
+ 2.Inicie o projeto Node.js:
 
+```bash
 npm init -y
+```
 
+ 3.Instale as dependências:
 
-	3.	Instale as dependências:
-
+```bash
 npm install express openai dotenv
+```
 
+ 4.Crie um arquivo .env na raiz:
 
-	4.	Crie um arquivo .env na raiz:
-
+```bash
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
 PORT=3000
-
-
+```
 
 ⚠️ Importante: nunca suba sua chave da OpenAI no GitHub. Use sempre o .env e adicione ele ao .gitignore.
 
@@ -65,6 +70,7 @@ PORT=3000
 
 Crie o arquivo server.js com o conteúdo abaixo:
 
+```bash
 const express = require("express");
 const dotenv = require("dotenv");
 const OpenAI = require("openai");
@@ -109,27 +115,30 @@ app.post("/ask", async (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log(`✅ Servidor rodando em http://localhost:${process.env.PORT || 3000}`);
 });
+```
 
-
-⸻
+---
 
 🚀 3. Executando o Projeto
 
 Inicie o servidor com:
 
+```bash
 node server.js
+```
 
 Se tudo estiver certo, o terminal mostrará:
 
-✅ Servidor rodando em http://localhost:3000
+```bash
+✅ Servidor rodando em <http://localhost:3000>
+```
 
 Abra no navegador:
-👉 http://localhost:3000
+👉 <http://localhost:3000>
 
 Você verá:
 
 🚀 Servidor Express rodando com OpenAI!
-
 
 ⸻
 
@@ -137,15 +146,19 @@ Você verá:
 
 Usando curl:
 
-curl -X POST http://localhost:3000/ask \
+```bash
+curl -X POST <http://localhost:3000/ask> \
 -H "Content-Type: application/json" \
 -d '{"question": "Explique o que é o Express.js"}'
+```
 
 Resposta esperada:
 
+```bash
 {
   "response": "Express.js é um framework minimalista para criar APIs e servidores com Node.js."
 }
+```
 
 Se aparecer “Cannot POST /”, é porque você fez o POST na rota errada.
 Certifique-se de enviar para /ask e não apenas /.
@@ -154,16 +167,15 @@ Certifique-se de enviar para /ask e não apenas /.
 
 🧩 5. Conceitos Ensinados
 
-Conceito	Explicação
-Express.js	Framework Node.js para criar APIs e servidores
-Rota (endpoint)	Caminho que o servidor escuta e responde (ex: /ask)
-Método HTTP	Tipo de ação (GET, POST, PUT, DELETE)
-Middleware express.json()	Permite receber e interpretar dados em JSON
-dotenv	Carrega variáveis de ambiente de um arquivo .env
-OpenAI SDK	Biblioteca oficial para interagir com a API da OpenAI
-req.body	Acessa os dados enviados pelo cliente
-res.json()	Retorna dados em formato JSON para o cliente
-
+Conceito Explicação
+Express.js Framework Node.js para criar APIs e servidores
+Rota (endpoint) Caminho que o servidor escuta e responde (ex: /ask)
+Método HTTP Tipo de ação (GET, POST, PUT, DELETE)
+Middleware express.json() Permite receber e interpretar dados em JSON
+dotenv Carrega variáveis de ambiente de um arquivo .env
+OpenAI SDK Biblioteca oficial para interagir com a API da OpenAI
+req.body Acessa os dados enviados pelo cliente
+res.json() Retorna dados em formato JSON para o cliente
 
 ⸻
 
@@ -171,6 +183,7 @@ res.json()	Retorna dados em formato JSON para o cliente
 
 🖼️ Gerar uma imagem
 
+```bash
 app.post("/image", async (req, res) => {
   const { prompt } = req.body;
 
@@ -186,9 +199,11 @@ app.post("/image", async (req, res) => {
     res.status(500).json({ error: "Erro ao gerar imagem" });
   }
 });
+```
 
 🌍 Traduzir texto
 
+```bash
 app.post("/translate", async (req, res) => {
   const { text, language } = req.body;
 
@@ -206,40 +221,35 @@ app.post("/translate", async (req, res) => {
     res.status(500).json({ error: "Erro ao traduzir o texto" });
   }
 });
-
+```
 
 ⸻
 
 🧭 7. Desafio Final
 
 Crie uma rota /summary que:
-	•	Receba um texto longo
-	•	Use a OpenAI para resumir esse texto
-	•	Retorne o resumo como resposta JSON
+ • Receba um texto longo
+ • Use a OpenAI para resumir esse texto
+ • Retorne o resumo como resposta JSON
 
 Exemplo de body:
 
+```bash
 {
   "text": "A inteligência artificial está revolucionando a forma como interagimos com dados..."
 }
-
+```
 
 ⸻
 
 🔍 8. Resumo da Aula
-	•	Você aprendeu a criar um servidor Express
-	•	Criou rotas GET e POST
-	•	Entendeu como o servidor se comunica com a API da OpenAI
-	•	Testou sua própria API de IA local
-	•	Viu como expandir para novos endpoints inteligentes (imagem, tradução, resumo)
+ • Você aprendeu a criar um servidor Express
+ • Criou rotas GET e POST
+ • Entendeu como o servidor se comunica com a API da OpenAI
+ • Testou sua própria API de IA local
+ • Viu como expandir para novos endpoints inteligentes (imagem, tradução, resumo)
 
 ⸻
-
-🧰 9. Próximos Passos
-	•	Integrar esse servidor com um frontend React ou HTML
-	•	Publicar a API no Render, Vercel ou Railway
-	•	Adicionar autenticação e logs de uso
-	•	Experimentar diferentes modelos da OpenAI (gpt-4o-mini, gpt-4-turbo, etc.)
 
 ⸻
 
