@@ -1,8 +1,3 @@
-Perfeito, Rodrigo 👌
-Aqui está um README.md completo, didático e profissional, ideal para compartilhar com os alunos da formação — ele explica passo a passo como o servidor Express foi criado, configurado e conectado à API da OpenAI, com exemplos, prints sugeridos e exercícios no final.
-
-⸻
-
 # 🚀 Aula Prática: Criando um Servidor Express conectado à API da OpenAI
 
 ## 🧑‍🏫 Sobre a Aula
