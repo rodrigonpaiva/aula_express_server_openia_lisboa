@@ -64,7 +64,7 @@ PORT=3000
 
 ⚠️ Importante: nunca suba sua chave da OpenAI no GitHub. Use sempre o .env e adicione ele ao .gitignore.
 
-⸻
+---
 
 🧠 2. Criando o Servidor Express
 
@@ -140,7 +140,7 @@ Você verá:
 
 🚀 Servidor Express rodando com OpenAI!
 
-⸻
+---
 
 🧪 4. Testando a API no Postman ou Terminal
 
@@ -163,7 +163,7 @@ Resposta esperada:
 Se aparecer “Cannot POST /”, é porque você fez o POST na rota errada.
 Certifique-se de enviar para /ask e não apenas /.
 
-⸻
+---
 
 🧩 5. Conceitos Ensinados
 
@@ -177,7 +177,7 @@ OpenAI SDK Biblioteca oficial para interagir com a API da OpenAI
 req.body Acessa os dados enviados pelo cliente
 res.json() Retorna dados em formato JSON para o cliente
 
-⸻
+---
 
 💡 6. Criando Outras Rotas Inteligentes
 
@@ -223,7 +223,7 @@ app.post("/translate", async (req, res) => {
 });
 ```
 
-⸻
+---
 
 🧭 7. Desafio Final
 
@@ -240,7 +240,7 @@ Exemplo de body:
 }
 ```
 
-⸻
+---
 
 🔍 8. Resumo da Aula
  • Você aprendeu a criar um servidor Express
@@ -249,9 +249,9 @@ Exemplo de body:
  • Testou sua própria API de IA local
  • Viu como expandir para novos endpoints inteligentes (imagem, tradução, resumo)
 
-⸻
+---
 
-⸻
+---
 
 👨‍💻 Autor
 
@@ -260,6 +260,6 @@ Formador e Engenheiro de Software
 📍 França | 🇧🇷 Brasil
 💡 Apaixonado por IA, programação e criação de produtos digitais inteligentes.
 
-⸻
+---
 
 🧾 Esta aula foi desenvolvida para a formação em desenvolvimento com foco em automações inteligentes, mostrando na prática como transformar fluxos n8n em código real usando Node.js e Express.
